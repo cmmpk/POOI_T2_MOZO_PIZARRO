@@ -15,9 +15,9 @@ namespace POOI_T2_MOZO_PIZARRO.Controllers
     public class AlumnoController : Controller
     {
         static string jlistAlumnos = @"[]";
-        // NUEVO: Ruta del archivo JSON físico en App_Data
+        // Ruta de archivo externo
         private string RutaArchivo => Server.MapPath("~/App_Data/alumnos.json");
-        // NUEVO: Método auxiliar para guardar en el archivo JSON físico
+        // Guardar en Archivo externo
         private void GuardarEnArchivoJson(List<Alumno> lista)
         {
             jlistAlumnos = JsonConvert.SerializeObject(lista, Formatting.Indented);
