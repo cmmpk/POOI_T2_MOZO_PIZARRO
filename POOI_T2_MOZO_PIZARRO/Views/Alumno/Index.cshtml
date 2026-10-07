@@ -1,0 +1,65 @@
+﻿@model IEnumerable<POOI_T2_MOZO_PIZARRO.Models.Alumno>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.dni)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.apellidos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.carrera)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ciclo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.dni)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombres)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.apellidos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.carrera)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ciclo)
+        </td>
+        <td class="text-center">
+            <div class="d-inline-flex gap-1 align-items-center">
+                @Html.ActionLink("Editar", "Edit", new { id = item.dni }, new { @class = "btn btn-outline-primary btn-sm" })
+                @Html.ActionLink("Detalles", "Details", new { id = item.dni }, new { @class = "btn btn-outline-info btn-sm" })
+
+                @using (Html.BeginForm("Delete", "Alumno", new { id = item.dni }, FormMethod.Post, new { @class = "d-inline m-0" }))
+                {
+                    <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('¿Seguro que deseas eliminar a este alumno?');">
+                        Eliminar
+                    </button>
+                }
+            </div>
+        </td>
+    </tr>
+}
+
+</table>
