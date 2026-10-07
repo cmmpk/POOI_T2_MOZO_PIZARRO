@@ -123,13 +123,24 @@ namespace POOI_T2_MOZO_PIZARRO.Controllers
             try
             {
                 List<Alumno> temporal = JsonConvert.DeserializeObject<List<Alumno>>(jlistAlumnos);
+
+                // Buscar DNI 
                 int index = temporal.FindIndex(a => a.dni == alumno.dni);
 
                 if (index != -1)
                 {
+                    // DNI existe
                     temporal[index] = alumno;
-                    GuardarEnArchivoJson(temporal);
+                    ViewBag.Mensaje = "Alumno actualizado correctamente.";
                 }
+                else
+                {
+                    // DNI no existe
+                    temporal.Add(alumno);
+                    ViewBag.Mensaje = "DNI no encontrado. Se ha registrado un nuevo alumno.";
+                }
+
+                GuardarEnArchivoJson(temporal);
 
                 return RedirectToAction("Index");
             }

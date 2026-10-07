@@ -5,5 +5,12 @@
     "apellidos": "asdsad",
     "carrera": "assda",
     "ciclo": "1"
+  },
+  {
+    "dni": "567",
+    "nombres": "pepe",
+    "apellidos": "we",
+    "carrera": "assda",
+    "ciclo": "2"
   }
 ]
